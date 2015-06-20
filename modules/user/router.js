@@ -21,15 +21,27 @@ router.route('/')
     })
     .post(function(req, res) {
         var data = {
-            _id: req.body._id || null,
             firstName: req.body.firstName || 'Jan',
             lastName: req.body.lastName || 'Pan',
             department: req.body.department || 'D9',
             birthday: req.body.birthday || '01/01/1990',
+            currentPosition: req.body.currentPosition || 'Software Developer',
             email: req.body.email || 'jan@gmail.com',
             skype: req.body.skype || 'jan90',
             dateOfEmployment: req.body.dateOfEmployment || '06/09/2010',
-            isAdmin: req.body.isAdmin
+            mobile: req.body.mobile || '+123456789',
+            facebook: req.body.facebook || 'http://facebook.com/jan',
+            linkedin: req.body.linkedin || 'http://linkedin.com/jan',
+            room: req.body.room || '906',
+            university: req.body.university || 'BSUIR',
+            faculty: req.body.firstName || 'Radiophysics and electronics',
+            major: req.body.major || 'Radiophysicist',
+            graduationYear: req.body.graduationYear || '2008',
+            additionalCourses: req.body.additionalCourses || 'Mongo DB University',
+            expPosition: req.body.expPosition || 'Developer',
+            expYears: req.body.expPosition || '5',
+            summary: req.body.expPosition || '',
+            isAdmin: req.body.isAdmin || false
         };
 
         controller.addUser(data, function(err, user) {
@@ -40,7 +52,6 @@ router.route('/')
 
                 return res.conflict(err, 'something went wrong');
             }
-
 
             return res.success(user);
         });
@@ -58,18 +69,9 @@ router.route('/:user')
         });
     })
     .put(function(req, res) {
-        var _id = req.params.user,
-            data = {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                department: req.body.department,
-                birthday: req.body.birthday,
-                email: req.body.emails,
-                skype: req.body.skype,
-                dateOfEmploy: req.body.dateOfEmploy
-            };
+        var _id = req.params.user;
 
-        controller.updateUser(_id, data, function(err, user){
+        controller.updateUser(_id, req.body, function(err, user){
             if (err) {
                 if (err.name !== 'ValidationError') {
                     return res.error(err);

@@ -15,8 +15,7 @@ exports.addUser = function(data, done) {
 
 exports.getUser = function(userId, done) {
     model.getItem({
-        args: userId,
-        fields: model.getReadFilterKeys('public')
+        args: userId
     }, done);
 };
 

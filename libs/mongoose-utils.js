@@ -13,18 +13,17 @@ module.exports = exports = function (schema) {
             fields: null
         });
 
-        var filter = {
-            deleted: false
-        };
+        var filter = {};
 
         if (typeof options.args === 'object') {
             _.extend(filter, options.args);
         } else {
-            filter._id = options;
+            filter._id = options.args;
         }
 
         if (typeof options.fields === 'string') {
             options.fields = options.fields || {};
+
             if (options.populate) {
                 this.findOne(filter, options.fields).populate(options.populate).exec(done);
             } else {
@@ -47,7 +46,7 @@ module.exports = exports = function (schema) {
     };
 
     schema.statics.updateItem = function (_id, data, done) {
-        this.findByIdAndUpdate(_id, data, done);
+        this.findByIdAndUpdate(_id, data, { new: true }, done);
     };
 
     schema.statics.deleteItem = function (_id, done) {

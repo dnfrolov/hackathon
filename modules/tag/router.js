@@ -21,7 +21,6 @@ router.route('/')
     })
     .post(function(req, res) {
         var data = {
-            _id: req.body._id || null,
             name: req.body.name
         };
 
@@ -50,12 +49,9 @@ router.route('/:tag')
         });
     })
     .put(function(req, res) {
-        var _id = req.params.tag,
-            data = {
-                name: req.body.name
-            };
+        var _id = req.params.tag;
 
-        controller.updateTag(_id, data, function(err, tag){
+        controller.updateTag(_id, req.body, function(err, tag){
             if (err) {
                 if (err.name !== 'ValidationError') {
                     return res.error(err);

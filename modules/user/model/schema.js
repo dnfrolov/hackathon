@@ -12,6 +12,9 @@ var schema = new mongoose.Schema({
     department: {
         type: String
     },
+    currentPosition: {
+        type: String
+    },
     birthday: {
         type: String
     },
@@ -21,9 +24,45 @@ var schema = new mongoose.Schema({
     skype: {
         type: String
     },
+    mobile: {
+        type: String
+    },
+    facebook: {
+        type: String
+    },
+    linkedin: {
+        type: String
+    },
+    room: {
+        type: String
+    },
     dateOfEmployment: {
         type: Date,
         default: Date.now
+    },
+    university: {
+        type: String
+    },
+    faculty: {
+        type: String
+    },
+    major: {
+        type: String
+    },
+    graduationYear: {
+        type: String
+    },
+    additionalCourses: {
+        type: String
+    },
+    expPosition: {
+        type: String
+    },
+    expYears: {
+        type: String
+    },
+    summary: {
+        type: String
     },
     isAdmin: {
         type: Boolean,
