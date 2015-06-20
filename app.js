@@ -40,5 +40,3 @@ exports.start = function (done) {
 exports.stop = function (done) {
     done();
 };
-
-app.use(require('./middlewares/api-break-error'));
