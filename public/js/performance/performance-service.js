@@ -12,9 +12,6 @@ function PerformanceService ($http) {
             return groups;
         });
     };
-    this.updateGoals = function (goals) {
-        return $http.post('/goals', goals);
-    };
 
     this.getPrs = function (userId) {
         return $http.get('/users/' + userId + '/prs').then(function (response) {
@@ -26,8 +23,14 @@ function PerformanceService ($http) {
         });
     };
 
-    this.updatePrs = function (userId, prs) {
-        return $http.put('/users/' + userId + '/prs', prs);
+    this.updateUser = function (userId, prs, goals) {
+        return $http.put('/users/' + userId + '/prs', prs).then(function () {
+            return $http.post('/goals/multi', goals);
+        }).then(function () {
+            alertify.alert('Changes has been Updated');
+        }).catch(function(){
+            alertify.alert('Something Went Wrong. Please Try Later');
+        });
     };
 }
 

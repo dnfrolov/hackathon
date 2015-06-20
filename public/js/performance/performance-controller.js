@@ -2,11 +2,11 @@
 
 var _ = require('lodash');
 
-//var groups = require('./groups');
 var angular = require('angular');
+var alertify = require('alertify');
 
 
-function PerformanceController(ngDialog, performanceService, dictionary, prs) {
+function PerformanceController(ngDialog, $stateParams, performanceService, dictionary, prs) {
     var vm = this;
     vm.groups = dictionary.concat(prs);
     vm.activePR = _.find(vm.groups, {type: 'pr', status: 'active'});
@@ -90,7 +90,9 @@ function PerformanceController(ngDialog, performanceService, dictionary, prs) {
     };
 
     vm.save = function () {
-
+        var prs = _.filter(vm.groups, {type: 'pr'});
+        var goals = _.filter(vm.groups, {type: 'dictionary'});
+        performanceService.updateUser($stateParams.id, prs, goals);
     };
 }
 
