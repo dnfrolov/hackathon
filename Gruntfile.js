@@ -76,7 +76,7 @@ module.exports = function (grunt) {
 
         concurrent: {
             dev: {
-                tasks: ['browserify:dev', 'concat:dev', 'copy:fonts', 'less:all'],
+                tasks: ['browserify:dev', 'concat:dev', 'copy:fonts', 'less:all', 'nodemon'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -113,6 +113,12 @@ module.exports = function (grunt) {
             }
         },
 
+        nodemon: {
+            local: {
+                script: 'worker.js'
+            }
+        },
+
         uglify: {
             prod: {
                 files: {
@@ -146,6 +152,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-nodemon');
 
     grunt.registerTask('dev', ['clean', 'concurrent:dev', 'watch']);
     grunt.registerTask('prod', ['clean', 'concurrent:prod', 'watch', 'uglify:prod']);

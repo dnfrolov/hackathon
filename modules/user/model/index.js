@@ -10,11 +10,10 @@ schema.plugin(mongooseUtils);
 
 schema.plugin(filter, {
     readFilter: {
-        'public': ['username', 'firstName', 'lastName', 'title', 'primaryEmail', 'emails',
-            'phones', 'zendeskUser', 'accounts', 'enabled', 'userType', 'lastLoginTime',
-            'lastLoginBrowser', 'lastLoginOperatingSystem', 'isCompleted', 'deleted'],
-        'search': ['username', 'firstName', 'lastName', 'title', 'primaryEmail', 'emails',
-            'phones', 'zendeskUser', 'accounts', 'userType']
+        'public': ['firstName', 'lastName', 'department', 'birthday', 'email',
+            'skype', 'dateOfEmploy'],
+        'search': ['firstName', 'lastName', 'department', 'birthday', 'email',
+            'skype', 'dateOfEmploy']
     }
 });
 

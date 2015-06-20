@@ -1,5 +1,7 @@
 'use strict';
 
+var logger = require('../libs/log')(module);
+
 var response = function response(status, data, message) {
     return {
         status: +status,
@@ -41,6 +43,8 @@ module.exports = function(req, res, next) {
         //--------------------------------
         // TODO: logger.log(error);
         //--------------------------------
+
+        console.log(error);
         return res.send(response(500, null, message));
     };
 

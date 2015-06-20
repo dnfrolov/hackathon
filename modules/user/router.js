@@ -13,7 +13,7 @@ router.route('/')
             filter: req.query.filter || {}
         }, function(err, data) {
             if (err) {
-                return res.error('something went wrong');
+                return res.error(err);
             }
 
             return res.success(data);
@@ -22,30 +22,19 @@ router.route('/')
     .post(function(req, res) {
         var data = {
             _id: req.body._id || null,
-            username: req.body.username,
-            password: '',
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            title: req.body.title,
-            primaryEmail: req.body.primaryEmail,
-            emails: req.body.emails,
-            phones: req.body.phones,
-            zendeskUser: req.body.zendeskUser,
-            accounts: req.body.accounts,
-            userType: req.body.userType,
-            lastLoginBrowser: req.body.lastLoginBrowser || null,
-            lastLoginOperatingSystem: req.body.lastLoginOperatingSystem || null,
-            lastLoginTime: req.body.lastLoginTime || null,
-            isConfirmed: false,
-            deleted: false,
-            enabled: true,
-            preferences: {}
+            firstName: req.body.firstName || 'Jan',
+            lastName: req.body.lastName || 'Pan',
+            department: req.body.department || 'D9',
+            birthday: req.body.birthday || '01/01/1990',
+            email: req.body.email || 'jan@gmail.com',
+            skype: req.body.skype || 'jan90',
+            dateOfEmploy: req.body.dateOfEmploy || '06/09/2010'
         };
 
         controller.addUser(data, function(err, user) {
             if (err) {
                 if (err.name !== 'ValidationError') {
-                    return res.error('something went wrong');
+                    return res.error(err);
                 }
 
                 return res.conflict(err, 'something went wrong');
@@ -61,7 +50,7 @@ router.route('/:user')
 
         controller.getUser(req.params.user, function(err, user) {
             if (err) {
-                return res.error('something went wrong');
+                return res.error(err);
             }
 
             return res.success(user);
@@ -70,24 +59,19 @@ router.route('/:user')
     .put(function(req, res) {
         var _id = req.params.user,
             data = {
-                username: req.body.username,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
-                title: req.body.title,
-                primaryEmail: req.body.primaryEmail,
-                emails: req.body.emails,
-                phones: req.body.phones,
-                zendeskUser: req.body.zendeskUser,
-                accounts: req.body.accounts,
-                userType: req.body.userType,
-                primaryAccount: req.body.primaryAccount,
-                enabled: !! req.body.enabled
+                department: req.body.department,
+                birthday: req.body.birthday,
+                email: req.body.emails,
+                skype: req.body.skype,
+                dateOfEmploy: req.body.dateOfEmploy
             };
 
-        controller.updateGridUser(_id, data, function(err, user){
+        controller.updateUser(_id, data, function(err, user){
             if (err) {
                 if (err.name !== 'ValidationError') {
-                    return res.error('something went wrong');
+                    return res.error(err);
                 }
 
                 return res.conflict(err, 'something went wrong');
@@ -102,7 +86,7 @@ router.route('/:user')
         controller.deleteUser(_id, function(err, user) {
             if (err) {
                 if (err.name !== 'ValidationError') {
-                    return res.error('something went wrong');
+                    return res.error(err);
                 }
 
                 return res.conflict(err, 'something went wrong');

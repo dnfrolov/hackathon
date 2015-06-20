@@ -80,11 +80,6 @@ module.exports = exports = function (schema) {
             options.limit = 10;
         }
 
-        // Enforce deleted filter
-        _.assign(options.filter, {
-            deleted: false
-        });
-
         if (options.query) {
             filter = util.prepareSearch(options.query, this);
             _.assign(options.filter, filter);
