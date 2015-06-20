@@ -14,7 +14,8 @@ var getLibs = function (min) {
         basePath + 'angular-bootstrap/ui-bootstrap-tpls' + target + '.js',
         basePath + 'angular-ui-router/release/angular-ui-router' + target + '.js',
         basePath + 'alertify.js/lib/alertify' + target + '.js',
-        basePath + 'angular-ui-tree/dist/angular-ui-tree' + target + '.js'
+        basePath + 'angular-ui-tree/dist/angular-ui-tree' + target + '.js',
+        basePath + 'ng-tags-input/ng-tags-input' + target + '.js'
     ];
 };
 
@@ -40,6 +41,9 @@ module.exports = function (grunt) {
                     watch: true,
                     keepAlive: true,
                     browserifyOptions: {
+                        debug: true
+                    },
+                    watchifyOptions: {
                         debug: true
                     }
                 },
@@ -76,13 +80,13 @@ module.exports = function (grunt) {
 
         concurrent: {
             dev: {
-                tasks: ['browserify:dev', 'concat:dev', 'copy:fonts', 'less:all', 'nodemon'],
+                tasks: ['browserify:dev', 'concat:dev', 'copy:fonts', 'less:all', 'nodemon:all'],
                 options: {
                     logConcurrentOutput: true
                 }
             },
             prod: {
-                tasks: ['browserify:prod', 'concat:prod', 'copy:fonts', 'less:all'],
+                tasks: ['browserify:prod', 'concat:prod', 'copy:fonts', 'less:all', 'nodemon:all'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -114,7 +118,7 @@ module.exports = function (grunt) {
         },
 
         nodemon: {
-            local: {
+            all: {
                 script: 'worker.js'
             }
         },
