@@ -1,5 +1,7 @@
 'use strict';
 
+var alertify = require('alertify');
+
 function UserService($q, $http, UserModel) {
     var baseUrl = 'http://localhost:3000/users/';
 
@@ -33,6 +35,22 @@ function UserService($q, $http, UserModel) {
         return $http(request).then(
             function (response) {
                 user._id = response.data.data._id;
+            },
+            function () {
+                alertify.error('Something went wrong');
+            });
+    };
+
+    this.saveResponses = function (userId, responses) {
+        return $http.put(baseUrl + userId + '/responses', responses).catch(function () {
+            alertify.error('Something went wrong');
+        });
+    };
+
+    this.getResponses = function (userId) {
+        return $http.get(baseUrl + userId + '/responses').then(
+            function (response) {
+                return response.data.responses;
             },
             function () {
                 alertify.error('Something went wrong');

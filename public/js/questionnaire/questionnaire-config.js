@@ -3,9 +3,14 @@
 function config($stateProvider) {
     $stateProvider
         .state('questionnaire', {
-            url: '/questionnaire/:id',
+            url: '/questionnaire/:userId',
             template: require('./questionnaire.html'),
-            controller: 'QuestionnaireController'
+            controller: 'QuestionnaireController',
+            resolve: {
+                questions: ['QuestionService', function (QuestionService) {
+                    return QuestionService.getList();
+                }]
+            }
         });
 }
 
