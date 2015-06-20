@@ -20,7 +20,7 @@ function SaveUserController($scope, $state, UserService, user) {
         }
 
         UserService.save($scope.user).then(function () {
-            $state.go('questionnaire', {id: $scope.user._id});
+            $state.go('questionnaire', {userId: $scope.user._id});
         });
     };
 }
