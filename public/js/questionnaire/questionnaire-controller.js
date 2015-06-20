@@ -2,22 +2,32 @@
 
 var _ = require('lodash');
 
-function QuestionnaireController($scope, $state, UserService, questions) {
+function QuestionnaireController($scope, $state, UserService, questions, responses) {
     $scope.userId = $state.params.userId;
     $scope.questions = questions;
 
-    $scope.responses = $scope.questions.map(function (question) {
-        return {
-            questionId: question._id,
-            questionName: question.name,
-            tags: []
-        };
-    });
-
-    $scope.getTags = function ($query, questionId) {
-        var question = _.find($scope.questions, function (question) {
+    var getQuestionById = function (questionId) {
+        return _.find($scope.questions, function (question) {
             return question._id === questionId;
         });
+    };
+
+    if (Array.isArray(responses)) {
+        $scope.responses = responses.map(function (response) {
+            return _.assign(response, {questionName: getQuestionById(response.questionId).name});
+        });
+    } else {
+        $scope.responses = $scope.questions.map(function (question) {
+            return {
+                questionId: question._id,
+                questionName: question.name,
+                tags: []
+            };
+        });
+    }
+
+    $scope.getTags = function ($query, questionId) {
+        var question = getQuestionById(questionId);
 
         if (!question) {
             return [];

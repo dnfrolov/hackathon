@@ -9,6 +9,9 @@ function config($stateProvider) {
             resolve: {
                 questions: ['QuestionService', function (QuestionService) {
                     return QuestionService.getList();
+                }],
+                responses: ['$stateParams', 'UserService', function ($stateParams, UserService) {
+                    return UserService.getResponses($stateParams.userId);
                 }]
             }
         });

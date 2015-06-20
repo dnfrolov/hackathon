@@ -50,7 +50,7 @@ function UserService($q, $http, UserModel) {
     this.getResponses = function (userId) {
         return $http.get(baseUrl + userId + '/responses').then(
             function (response) {
-                return response.data.responses;
+                return response.data.data.responses;
             },
             function () {
                 alertify.error('Something went wrong');
