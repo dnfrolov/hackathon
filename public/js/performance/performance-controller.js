@@ -8,6 +8,12 @@ var alertify = require('alertify');
 
 function PerformanceController(ngDialog, $stateParams, performanceService, dictionary, prs) {
     var vm = this;
+    prs = prs || [{
+        "title": "Performance Review - Sep 2014",
+        "type": "pr",
+        "status": "active",
+        "items": []
+    }];
     vm.groups = dictionary.concat(prs);
     vm.activePR = _.find(vm.groups, {type: 'pr', status: 'active'});
 
@@ -92,7 +98,20 @@ function PerformanceController(ngDialog, $stateParams, performanceService, dicti
     vm.save = function () {
         var prs = _.filter(vm.groups, {type: 'pr'});
         var goals = _.filter(vm.groups, {type: 'dictionary'});
-        performanceService.updateUser($stateParams.id, prs, goals);
+
+        var skills = [];
+
+        _.forEach(prs, function (pr) {
+            var items = _.filter(pr.items, {status: 'succeeded'});
+            _.forEach(items, function (item) {
+                skills.push({
+                    title: item.title,
+                    level: item.level
+                });
+            });
+        });
+
+        performanceService.updateUser($stateParams.id, prs, goals, skills);
     };
 }
 

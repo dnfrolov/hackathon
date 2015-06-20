@@ -29,7 +29,12 @@
             <tr ng-repeat="user in vm.users">
                 <td>{{user.firstName}} {{user.lastName}}</td>
                 <td>{{user.expPosition}}</td>
-                <td>none</td>
+                <td>
+                    <div ng-repeat="skill in user.skills">
+                        <span>{{skill.title}}</span>
+                        <span style="font-weight: bold">{{skill.level}}</span>
+                    </div>
+                </td>
                 <td>{{user.email}}</td>
                 <td>{{user.skype}}</td>
             </tr>

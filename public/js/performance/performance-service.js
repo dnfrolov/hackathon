@@ -23,8 +23,8 @@ function PerformanceService ($http) {
         });
     };
 
-    this.updateUser = function (userId, prs, goals) {
-        return $http.put('/users/' + userId + '/prs', prs).then(function () {
+    this.updateUser = function (userId, prs, goals, skills) {
+        return $http.put('/users/' + userId + '/prs', {prs: prs, skills: skills}).then(function () {
             return $http.post('/goals/multi', goals);
         }).then(function () {
             alertify.alert('Changes has been Updated');
