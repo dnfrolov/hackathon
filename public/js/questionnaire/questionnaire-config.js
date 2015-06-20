@@ -3,7 +3,7 @@
 function config($stateProvider) {
     $stateProvider
         .state('questionnaire', {
-            url: '/questionnaire/:userId',
+            url: '/questionnaire/:id',
             template: require('./questionnaire.html'),
             controller: 'QuestionnaireController',
             resolve: {
@@ -11,7 +11,7 @@ function config($stateProvider) {
                     return QuestionService.getList();
                 }],
                 responses: ['$stateParams', 'UserService', function ($stateParams, UserService) {
-                    return UserService.getResponses($stateParams.userId);
+                    return UserService.getResponses($stateParams.id);
                 }]
             }
         });

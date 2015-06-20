@@ -4,7 +4,7 @@ var _ = require('lodash');
 var alertify = require('alertify');
 
 function UserService($q, $http, UserModel) {
-    var baseUrl = 'http://localhost:3000/users/';
+    var baseUrl = '/users/';
 
     this.getAll = function () {
         var self = this;
