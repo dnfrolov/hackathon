@@ -153,4 +153,17 @@ router.route('/:user/prs')
         });
     });
 
+router.route('/:user/searchByTags')
+    .get(function(req, res) {
+        controller.getUsers({
+            filter: {'responses.tags._id': {$in: req.query.filter}}
+        }, function(err, data) {
+            if (err) {
+                return res.error(err);
+            }
+
+            return res.success(data);
+        });
+    });
+
 module.exports = router;
