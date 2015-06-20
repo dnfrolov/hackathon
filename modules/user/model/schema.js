@@ -21,9 +21,13 @@ var schema = new mongoose.Schema({
     skype: {
         type: String
     },
-    dateOfEmploy: {
+    dateOfEmployment: {
         type: Date,
         default: Date.now
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 });
 
