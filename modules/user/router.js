@@ -113,7 +113,34 @@ router.route('/:user/responses')
     .put(function(req, res) {
         var _id = req.params.user;
 
-        controller.updateUser(_id, req.body, function(err, user){
+        controller.updateUser(_id, { responses: req.body }, function(err, user){
+            if (err) {
+                if (err.name !== 'ValidationError') {
+                    return res.error(err);
+                }
+
+                return res.conflict(err, 'something went wrong');
+            }
+
+            return res.success(user);
+        });
+    });
+
+router.route('/:user/prs')
+    .get(function(req, res) {
+
+        controller.getUserPrs(req.params.user, function(err, user) {
+            if (err) {
+                return res.error(err);
+            }
+
+            return res.success(user);
+        });
+    })
+    .put(function(req, res) {
+        var _id = req.params.user;
+
+        controller.updateUser(_id, { prs: req.body }, function(err, user){
             if (err) {
                 if (err.name !== 'ValidationError') {
                     return res.error(err);

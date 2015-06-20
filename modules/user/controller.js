@@ -26,6 +26,13 @@ exports.getUserResponses = function(userId, done) {
     }, done);
 };
 
+exports.getUserPrs = function(userId, done) {
+    model.getItem({
+        args: userId,
+        fields: 'prs'
+    }, done);
+};
+
 exports.updateUser = function(userId, data, done) {
     model.updateItem(userId, data, done);
 };
