@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 
-function ProfileController($scope, user, questions, responses) {
+function ProfileController($scope, $state, user, questions, responses) {
     var getQuestionById = function (questionId) {
         return _.find(questions, function (question) {
             return question._id === questionId;
@@ -14,6 +14,10 @@ function ProfileController($scope, user, questions, responses) {
     });
 
     $scope.user = user;
+
+    $scope.edit = function () {
+        $state.go('user.save', {id: $scope.user._id});
+    };
 }
 
 module.exports = ProfileController;
