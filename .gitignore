@@ -1,3 +1,6 @@
 /.idea
 /public/bower_components
+/public/build
+/public/css
+/public/fonts
 /node_modules

@@ -4,9 +4,12 @@
   "homepage": "https://github.com/dnfrolov/hackathon",
   "license": "MIT",
   "dependencies": {
+    "alertify.js": "~0.3.11",
     "angular": "~1.4.1",
-    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "~0.13.0",
+    "angular-ui-router": "~0.2.15",
     "angular-ui-tree": "~2.5.0",
-    "ui-router": "0.2.15"
+    "bootstrap": "~3.3.5",
+    "lodash": "~2.4.1"
   }
 }
