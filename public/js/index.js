@@ -4,6 +4,7 @@ var angular = require('angular');
 
 require('./user/user');
 require('./questionnaire/questionnaire');
+require('./performance/index');
 
 angular.element(document).ready(function () {
     angular
@@ -11,8 +12,9 @@ angular.element(document).ready(function () {
             'ui.router',
             'ui.bootstrap',
             'ui.tree',
-            'User',
-            'Questionnaire'
+            'Questionnaire',
+            'Performance',
+            'User'
         ])
         .config(['$urlRouterProvider', require('./config')]);
 

@@ -1,0 +1,146 @@
+<div class="container-fluid performance-form" ui-tree data-drop-enabled="false" data-drag-enabled="false">
+    <div class="angular-ui-tree row" ui-tree-nodes ng-model="vm.groups">
+
+        <div class="col-md-6">
+            <h3>User skills and experience</h3>
+
+            <ol>
+                <li ng-repeat="group in vm.groups" ui-tree-node ng-if="group.type === 'pr'" data-collapsed="group.status === 'completed'">
+                    <!-- Header -->
+                    <div ui-tree-handle class="group-title" ng-click="vm.toggle(this)">
+                        <a href="">
+                            <i class="glyphicon glyphicon-chevron-up" ng-hide="collapsed"></i>
+                            <i class="glyphicon glyphicon-chevron-down" ng-show="collapsed"></i>
+                        </a>
+
+                        <span>{{group.title}}</span>
+
+                        <span class="pull-right" ng-if="group.status === 'completed'">Completed</span>
+
+                    </div>
+
+                    <!-- Items -->
+                    <ol ui-tree-nodes ng-model="group.items" ng-hide="collapsed">
+                        <li ng-repeat="item in group.items" ui-tree-node>
+                            <div ui-tree-handle>
+
+                                <span ng-if="group.status === 'completed'">
+                                    <i class="glyphicon glyphicon-ok success" ng-if="item.status === 'succeeded'"></i>
+                                    <i class="glyphicon glyphicon-remove failed" ng-if="item.status === 'failed' || !item.status"></i>
+                                </span>
+                                <span ng-if="group.status === 'active'">
+                                    <i class="glyphicon glyphicon-ok" ng-click="item.status = 'succeeded'" ng-if="item.status === 'failed' || !item.status"></i>
+                                    <i class="glyphicon glyphicon-ok success" ng-click="item.status = 'failed'" ng-if="item.status === 'succeeded'"></i>
+                                </span>
+
+
+                                <span ng-click="vm.viewItem(item)">{{item.title}}</span>
+                                <span class="item-level pull-right" ng-if="group.status === 'completed'">{{item.level}}</span>
+
+                                <select class="level-select" ng-if="group.status === 'active' && item.status === 'succeeded'" ng-model="item.level">
+                                    <option selected>No Experience</option>
+                                    <option>Novice</option>
+                                    <option>Familiar</option>
+                                    <option>Advanced</option>
+                                    <option>Expert</option>
+                                </select>
+
+                                <a href="" class="btn btn-danger btn-xs pull-right" data-nodrag="" ng-click="vm.removeItem(group, item)" ng-if="group.status === 'active'">
+                                    <i class="glyphicon glyphicon-minus"></i>
+                                </a>
+
+                            </div>
+                        </li>
+                    </ol>
+
+                    <!-- Note Section -->
+                    <ol data-nodrag class="angular-ui-tree-nodes" ng-hide="collapsed">
+                        <li class="angular-ui-tree-node" ng-if="group.status === 'completed' && group.note">
+                            <div class="category-title angular-ui-tree-handle note">{{group.note}}</div>
+                        </li>
+                        <li class="angular-ui-tree-node" ng-if="group.status === 'active'">
+                            <div class="category-title angular-ui-tree-handle">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <textarea rows="3" class="form-control" placeholder="Leave your feedback" ng-model="group.note"></textarea>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-success" ng-click="vm.completeActivePR()">Complete PR</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                    </ol>
+
+                </li>
+            </ol>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Available Targets</h3>
+
+            <ol>
+                <li ui-tree-node ng-repeat="group in vm.groups" ng-if="group.type === 'dictionary'" data-collapsed="true">
+                    <!-- Header -->
+                    <div ui-tree-handle class="group-title" ng-click="vm.toggle(this)">
+                        <a href="">
+                            <i class="glyphicon glyphicon-chevron-up" ng-hide="collapsed"></i>
+                            <i class="glyphicon glyphicon-chevron-down" ng-show="collapsed"></i>
+                        </a>
+                        <span>{{group.title}}</span>
+                    </div>
+                    <!-- Items -->
+                    <ol ui-tree-nodes ng-model="group.items" ng-hide="collapsed">
+                        <li ui-tree-node ng-repeat="item in group.items">
+                            <div ui-tree-handle>
+
+                                <a href="" class="btn btn-danger btn-xs pull-right" data-nodrag ng-click="vm.removeItem(group, item)">
+                                    <i class="glyphicon glyphicon-minus"></i>
+                                </a>
+
+                                <a href="" class="btn btn-primary btn-xs pull-right" data-nodrag ng-click="vm.addItemToActivePR(group, item)">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                </a>
+
+                                <div ng-click="vm.editItem(item)">{{item.title}}</div>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <!-- Add Goal to Category -->
+                    <ol data-nodrag class="angular-ui-tree-nodes" ng-hide="collapsed">
+                        <li class="angular-ui-tree-node">
+                            <div class="category-title angular-ui-tree-handle">
+                                <form class="form-inline" role="form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" ng-model="group.newItemTitle" placeholder="Category name">
+                                    </div>
+                                    <button type="submit" class="btn btn-default" ng-click="vm.addItem(group)">Add Category</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ol>
+
+                </li>
+            </ol>
+
+            <!-- Add New Category -->
+            <ol>
+                <li class="angular-ui-tree-node">
+                    <div class="group-title angular-ui-tree-handle">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="vm.newGroupTitle" placeholder="Group name">
+                            </div>
+                            <button type="submit" class="btn btn-default" ng-click="vm.addGroup()">Add Group</button>
+                        </form>
+                    </div>
+                </li>
+            </ol>
+
+
+        </div>
+
+    </div>
+</div>

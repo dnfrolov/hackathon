@@ -15,7 +15,8 @@ var getLibs = function (min) {
         basePath + 'angular-ui-router/release/angular-ui-router' + target + '.js',
         basePath + 'alertify.js/lib/alertify' + target + '.js',
         basePath + 'angular-ui-tree/dist/angular-ui-tree' + target + '.js',
-        basePath + 'ng-tags-input/ng-tags-input' + target + '.js'
+        basePath + 'ng-tags-input/ng-tags-input' + target + '.js',
+        basePath + 'ngDialog/js/ngDialog' + target + '.js'
     ];
 };
 

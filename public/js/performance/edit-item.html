@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" placeholder="Title" ng-model="vm.item.title">
+    </div>
+    <div class="form-group">
+        <label>Resources</label>
+        <textarea class="form-control" rows="7" ng-model="vm.item.resource"></textarea>
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-success" ng-click="vm.submit()">Submit</button>
+    </div>
+</form>
