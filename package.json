@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/dnfrolov/hackathon",
   "dependencies": {
-    "express": "^4.12.4"
+    "express": "^4.10.4"
   }
 }
