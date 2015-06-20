@@ -1,8 +1,8 @@
-<div class="container-fluid performance-form" ui-tree data-drop-enabled="false" data-drag-enabled="false">
+<div class="performance-form" ui-tree data-drop-enabled="false" data-drag-enabled="false">
     <div class="angular-ui-tree row" ui-tree-nodes ng-model="vm.groups">
 
         <div class="col-md-6">
-            <h3>User skills and experience</h3>
+            <h3 style="font-weight: bold;">User Skills and Experience</h3>
 
             <ol>
                 <li ng-repeat="group in vm.groups" ui-tree-node ng-if="group.type === 'pr'" data-collapsed="group.status === 'completed'">
@@ -78,7 +78,7 @@
         </div>
 
         <div class="col-md-6">
-            <h3>Available Targets</h3>
+            <h3 style="font-weight: bold;">Available Goals</h3>
 
             <ol>
                 <li ui-tree-node ng-repeat="group in vm.groups" ng-if="group.type === 'dictionary'" data-collapsed="true">
@@ -116,7 +116,7 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control" ng-model="group.newItemTitle" placeholder="Category name">
                                     </div>
-                                    <button type="submit" class="btn btn-default" ng-click="vm.addItem(group)">Add Category</button>
+                                    <button type="submit" class="btn btn-success" ng-click="vm.addItem(group)">Add Goal</button>
                                 </form>
                             </div>
                         </li>
@@ -133,7 +133,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" ng-model="vm.newGroupTitle" placeholder="Group name">
                             </div>
-                            <button type="submit" class="btn btn-default" ng-click="vm.addGroup()">Add Group</button>
+                            <button type="submit" class="btn btn-success" ng-click="vm.addGroup()">Add Group</button>
                         </form>
                     </div>
                 </li>
