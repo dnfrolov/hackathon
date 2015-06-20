@@ -6,6 +6,7 @@ angular.module('User', [])
     .config(['$stateProvider', require('./user-config')])
     .controller('ProfileController', [
         '$scope',
+        '$state',
         'user',
         'questions',
         'responses',
