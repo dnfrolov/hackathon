@@ -16,7 +16,8 @@ var schema = new mongoose.Schema({
         type: String
     },
     birthday: {
-        type: String
+        type: Date,
+        default: Date.now
     },
     email: {
         type: String
@@ -59,7 +60,7 @@ var schema = new mongoose.Schema({
         type: String
     },
     expYears: {
-        type: String
+        type: Number
     },
     summary: {
         type: String

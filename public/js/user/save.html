@@ -1,0 +1,427 @@
+<form name="userForm" class="form-horizontal" novalidate ng-submit="save()">
+    <h3>General Info</h3>
+    <hr/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="firstName"
+                   class="form-control"
+                   placeholder="First Name"
+                   required
+                   ng-model="user.firstName">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.firstName.$dirty) && userForm.firstName.$error.required">
+                First Name is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="lastName"
+                   class="form-control"
+                   placeholder="Last Name"
+                   required
+                   ng-model="user.lastName">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.lastName.$dirty) && userForm.lastName.$error.required">
+                Last Name is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Date of Birth</label>
+        <div class="col-sm-10">
+            <p class="input-group">
+                <input type="text"
+                       name="birthday"
+                       class="form-control"
+                       datepicker-popup="yyyy-MM-dd"
+                       ng-model="user.birthday"
+                       is-open="isBirthdayDatepickerOpened"
+                       ng-required="true"
+                       close-text="Close"/>
+
+                <span class="input-group-btn">
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="openDatepicker($event, true)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.birthday.$dirty) && userForm.birthday.$error.required">
+                Date of Birth is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Department</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="department" required ng-model="user.department">
+                <option value="D1">D1</option>
+                <option value="D2">D2</option>
+                <option value="D3">D3</option>
+                <option value="D4">D4</option>
+                <option value="D5">D5</option>
+                <option value="D6">D6</option>
+                <option value="D7">D7</option>
+                <option value="D8">D8</option>
+                <option value="D9">D9</option>
+                <option value="D10">D10</option>
+                <option value="D11">D11</option>
+                <option value="DQA1">DQA1</option>
+                <option value="DQA2">DQA2</option>
+                <option value="DQA3">DQA3</option>
+                <option value="HR">HR</option>
+            </select>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.department.$dirty) && userForm.department.$error.required">
+                Department is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="title"
+                   class="form-control"
+                   placeholder="Title"
+                   required
+                   ng-model="user.currentPosition">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.title.$dirty) && userForm.title.$error.required">
+                Title is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Corporate Email</label>
+        <div class="col-sm-10">
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   placeholder="Corporate Email"
+                   required
+                   ng-model="user.email">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.email.$dirty) && userForm.email.$error.required">
+                Corporate Email is required
+            </p>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.email.$dirty) && userForm.email.$error.email">
+                Corporate Email is not valid
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Skype</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="skype"
+                   class="form-control"
+                   placeholder="Skype"
+                   required
+                   ng-model="user.skype">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.skype.$dirty) && userForm.skype.$error.required">
+                Skype is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Mobile</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="mobile"
+                   class="form-control"
+                   placeholder="Mobile"
+                   required
+                   ng-model="user.mobile">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.mobile.$dirty) && userForm.mobile.$error.required">
+                Mobile is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Profile in Facebook</label>
+        <div class="col-sm-10">
+            <input type="url"
+                   name="facebook"
+                   class="form-control"
+                   placeholder="Profile in Facebook"
+                   ng-model="user.facebook">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.facebook.$dirty) && userForm.facebook.$error.url">
+                Profile in Facebook is not valid
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Profile in LinkedIn</label>
+        <div class="col-sm-10">
+            <input type="url"
+                   name="linkedIn"
+                   class="form-control"
+                   placeholder="Profile in LinkedIn"
+                   ng-model="user.linkedin">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.linkedIn.$dirty) && userForm.linkedIn.$error.url">
+                Profile in LinkedIn is not valid
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Date of Employment</label>
+        <div class="col-sm-10">
+            <p class="input-group">
+                <input type="text"
+                       name="employment"
+                       class="form-control"
+                       datepicker-popup="yyyy-MM-dd"
+                       ng-model="user.dateOfEmployment"
+                       is-open="isEmploymentDatepickerOpened"
+                       ng-required="true"
+                       close-text="Close"/>
+
+                <span class="input-group-btn">
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="openDatepicker($event, false)">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.employment.$dirty) && userForm.employment.$error.required">
+                Date of Employment is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Room</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="room" required ng-model="user.room">
+                <option value="901">901</option>
+                <option value="902">902</option>
+                <option value="903">903</option>
+                <option value="904">904</option>
+                <option value="905">905</option>
+                <option value="906">906</option>
+                <option value="907">907</option>
+                <option value="1001">1001</option>
+                <option value="1002">1002</option>
+                <option value="1003">1003</option>
+                <option value="1004">1004</option>
+                <option value="1005">1005</option>
+                <option value="1005">1006</option>
+                <option value="1005">1007</option>
+                <option value="1101">1101</option>
+                <option value="1102">1102</option>
+                <option value="1103">1103</option>
+                <option value="1104">1104</option>
+                <option value="1105">1105</option>
+                <option value="1106">1106</option>
+                <option value="1107">1107</option>
+            </select>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.room.$dirty) && userForm.room.$error.required">
+                Room is required
+            </p>
+        </div>
+    </div>
+
+
+    <h3>Education</h3>
+    <hr/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name of Institution</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="institution"
+                   class="form-control"
+                   placeholder="Name of Institution"
+                   required
+                   ng-model="user.university">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.institution.$dirty) && userForm.institution.$error.required">
+                Name of Institution is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Faculty</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="faculty"
+                   class="form-control"
+                   placeholder="Faculty"
+                   required
+                   ng-model="user.faculty">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.faculty.$dirty) && userForm.faculty.$error.required">
+                Faculty is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Major</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="major"
+                   class="form-control"
+                   placeholder="Major"
+                   required
+                   ng-model="user.major">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.major.$dirty) && userForm.major.$error.required">
+                Major is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Graduation Year</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="graduationYear" required ng-model="user.graduationYear">
+                <option value="1990">1990</option>
+                <option value="1991">1991</option>
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <option value="1994">1994</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+            </select>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.graduationYear.$dirty) && userForm.graduationYear.$error.required">
+                Graduation Year is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Additional Courses</label>
+        <div class="col-sm-10">
+            <textarea name="additionalCourses"
+                      class="form-control"
+                      placeholder="Additional Courses"
+                      ng-model="user.additionalCourses">
+            </textarea>
+        </div>
+    </div>
+
+
+    <h3>Experience</h3>
+    <hr/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   name="experienceTitle"
+                   class="form-control"
+                   placeholder="Title"
+                   required
+                   ng-model="user.expPosition">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.experienceTitle.$dirty) && userForm.experienceTitle.$error.required">
+                Title is required
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Years</label>
+        <div class="col-sm-10">
+            <input type="number"
+                   name="experienceYears"
+                   class="form-control"
+                   min="0"
+                   max="100"
+                   placeholder="Years"
+                   required
+                   ng-model="user.expYears">
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.experienceYears.$dirty) && userForm.experienceYears.$error.required">
+                Years is required
+            </p>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.experienceYears.$dirty) && userForm.experienceYears.$error.number">
+                Years is not a valid number
+            </p>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.experienceYears.$dirty) && userForm.experienceYears.$error.min">
+                Years cannot be less than 0
+            </p>
+
+            <p class="error" ng-show="(userForm.$submitted || userForm.experienceYears.$dirty) && userForm.experienceYears.$error.max">
+                Years cannot be more that 100
+            </p>
+        </div>
+    </div>
+
+
+    <h3>Summary</h3>
+    <hr/>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Summary</label>
+        <div class="col-sm-10">
+            <textarea name="summary"
+                      class="form-control"
+                      placeholder="Summary"
+                      ng-model="user.summary">
+            </textarea>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Save</button>
+        </div>
+    </div>
+</form>

@@ -1,7 +1,7 @@
 'use strict';
 
 function config($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/profile');
+    $urlRouterProvider.otherwise('/user/save/');
 }
 
 module.exports = config;
