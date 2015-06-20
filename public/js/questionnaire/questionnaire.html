@@ -9,11 +9,15 @@
                         placeholder="{{response.questionName}}">
                 <auto-complete source="getTags($query, response.questionId)"
                                display-property="name"
-                               min-length="2"
+                               min-length="1"
                                max-results-to-show="100"
                                select-first-match="false">
                 </auto-complete>
             </tags-input>
+
+            <p>
+                Start typing and select from suggestions.
+            </p>
         </div>
     </div>
 
