@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "angular": "~1.4.1",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "angular-ui-tree": "~2.5.0",
+    "ui-router": "0.2.15"
   }
 }
