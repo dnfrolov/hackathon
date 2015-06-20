@@ -15,8 +15,7 @@ exports.addTag = function(data, done) {
 
 exports.getTag = function(tagId, done) {
     model.getItem({
-        args: tagId,
-        fields: model.getReadFilterKeys('public')
+        args: tagId
     }, done);
 };
 

@@ -65,6 +65,10 @@ var schema = new mongoose.Schema({
     summary: {
         type: String
     },
+    responses: [{
+        questionId: mongoose.Schema.ObjectId,
+        tags: []
+    }],
     isAdmin: {
         type: Boolean,
         default: false

@@ -50,12 +50,12 @@ module.exports = exports = function (schema) {
     };
 
     schema.statics.deleteItem = function (_id, done) {
-        this.getItem(_id, function (err, item) {
+        this.getItem({args: _id}, function (err, item) {
             if (!item) {
                 return done();
             }
-            item.deleted = true;
-            item.save(done);
+
+            item.remove(done);
         });
     };
 
@@ -71,13 +71,8 @@ module.exports = exports = function (schema) {
             population: null,
             sort: null,
             skip: 0,
-            limit: 10
+            limit: 0
         });
-
-        // If limit is null or <= 0, override its value to enforce a limited response
-        if (!options.limit || options.limit < 0) {
-            options.limit = 10;
-        }
 
         if (options.query) {
             filter = util.prepareSearch(options.query, this);

@@ -7,7 +7,7 @@ router.route('/')
     .get(function(req, res) {
         controller.getTags({
             skip: req.query.skip || 0,
-            limit: req.query.limit || 10,
+            limit: req.query.limit,
             sort: req.query.sort || null,
             query: req.query.query || null,
             filter: req.query.filter || {}
@@ -20,6 +20,10 @@ router.route('/')
         });
     })
     .post(function(req, res) {
+        if(!req.body.name) {
+            return res.conflict({}, 'name is empty');
+        }
+
         var data = {
             name: req.body.name
         };
@@ -40,7 +44,7 @@ router.route('/')
 router.route('/:tag')
     .get(function(req, res) {
 
-        controller.getUser(req.params.tag, function(err, tag) {
+        controller.getTag(req.params.tag, function(err, tag) {
             if (err) {
                 return res.error(err);
             }
