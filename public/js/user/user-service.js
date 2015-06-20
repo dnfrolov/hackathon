@@ -3,7 +3,7 @@
 var alertify = require('alertify');
 
 function UserService($q, $http, UserModel) {
-    var baseUrl = 'http://localhost:3000/users/';
+    var baseUrl = '/users/';
 
     this.create = function (data) {
         return new UserModel(data);

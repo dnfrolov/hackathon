@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 function QuestionnaireController($scope, $state, UserService, questions, responses) {
-    $scope.userId = $state.params.userId;
+    $scope.userId = $state.params.id;
     $scope.questions = questions;
 
     var getQuestionById = function (questionId) {
