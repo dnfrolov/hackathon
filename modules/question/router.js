@@ -83,7 +83,9 @@ router.route('/:q')
 
             },
             function(tags, callback) {
-                req.body.tags = tags.data;
+                if(tags.data) {
+                    req.body.tags = tags.data;
+                }
                 controller.updateQuestion(_id, req.body, callback);
             }
         ], function (err, result) {
