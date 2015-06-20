@@ -1,0 +1,10 @@
+{
+  "name": "hackaton",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dnfrolov/hackathon",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.1",
+    "bootstrap": "~3.3.5"
+  }
+}
