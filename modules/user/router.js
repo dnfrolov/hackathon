@@ -155,6 +155,10 @@ router.route('/:user/prs')
 
 router.route('/:user/searchByTags')
     .get(function(req, res) {
+        if(!req.query.filter) {
+            return res.conflict(null, 'pass filter');
+        }
+        
         controller.getUsers({
             filter: {'responses.tags._id': {$in: req.query.filter}}
         }, function(err, data) {
