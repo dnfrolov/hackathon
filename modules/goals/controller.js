@@ -13,6 +13,10 @@ exports.addGoal = function(data, done) {
     return model.addItem(data, done);
 };
 
+exports.addGoals = function(data, done) {
+    return model.addItems(data, done);
+};
+
 exports.getGoal = function(userId, done) {
     model.getItem({
         args: userId

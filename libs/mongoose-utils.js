@@ -45,6 +45,20 @@ module.exports = exports = function (schema) {
         item.save(done);
     };
 
+    schema.statics.addItems = function (data, done) {
+        if(Array.isArray(data)) {
+            var Model = this;
+
+            return async.each(data, function (item, callback) {
+                var newModel = new Model(item);
+                newModel.save(callback);
+            }, done);
+
+        }
+
+        return done();
+    };
+
     schema.statics.updateItem = function (_id, data, done) {
         this.findByIdAndUpdate(_id, data, { new: true }, done);
     };

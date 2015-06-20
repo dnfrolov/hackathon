@@ -38,6 +38,25 @@ router.route('/')
         });
     });
 
+router.route('/multi')
+    .post(function(req, res) {
+        if(!Array.isArray(req.body)) {
+            return res.conflict(null, 'need array');
+        }
+
+        controller.addGoals(req.body, function(err, user) {
+            if (err) {
+                if (err.name !== 'ValidationError') {
+                    return res.error(err);
+                }
+
+                return res.conflict(err, 'something went wrong');
+            }
+
+            return res.success(user);
+        });
+    });
+
 router.route('/:goal')
     .get(function(req, res) {
 
