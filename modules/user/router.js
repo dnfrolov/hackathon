@@ -41,6 +41,9 @@ router.route('/')
             expPosition: req.body.expPosition || 'Developer',
             expYears: req.body.expPosition || '5',
             summary: req.body.expPosition || '',
+            skills: req.body.skills || [],
+            responses: req.body.responses || [],
+            prs: req.body.prs || [],
             isAdmin: req.body.isAdmin || false
         };
 
@@ -140,7 +143,7 @@ router.route('/:user/prs')
     .put(function(req, res) {
         var _id = req.params.user;
 
-        controller.updateUser(_id, { prs: req.body }, function(err, user){
+        controller.updateUser(_id, { prs: req.body.prs, skills: req.body.skills }, function(err, user){
             if (err) {
                 if (err.name !== 'ValidationError') {
                     return res.error(err);
@@ -158,9 +161,26 @@ router.route('/:user/searchByTags')
         if(!req.query.filter) {
             return res.conflict(null, 'pass filter');
         }
-        
+
         controller.getUsers({
             filter: {'responses.tags._id': {$in: req.query.filter}}
+        }, function(err, data) {
+            if (err) {
+                return res.error(err);
+            }
+
+            return res.success(data);
+        });
+    });
+
+router.route('/:user/searchBySkills')
+    .get(function(req, res) {
+        if(!req.query.filter) {
+            return res.conflict(null, 'pass filter');
+        }
+
+        controller.getUsers({
+            filter: {'skills.title': {$in: req.query.filter}}
         }, function(err, data) {
             if (err) {
                 return res.error(err);

@@ -69,6 +69,10 @@ var schema = new mongoose.Schema({
         questionId: mongoose.Schema.ObjectId,
         tags: []
     }],
+    skills: [{
+        title: String,
+        level: String
+    }],
     prs: [{
         title: String,
         status: String,
