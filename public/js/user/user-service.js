@@ -1,9 +1,23 @@
 'use strict';
 
+var _ = require('lodash');
 var alertify = require('alertify');
 
 function UserService($q, $http, UserModel) {
     var baseUrl = 'http://localhost:3000/users/';
+
+    this.getAll = function () {
+        var self = this;
+        return $http.get(baseUrl).then(function (response) {
+            var users = [];
+            _.forEach(response.data.data.data, function (user){
+                users.push(self.create(user));
+            });
+
+            return users;
+
+        });
+    };
 
     this.create = function (data) {
         return new UserModel(data);

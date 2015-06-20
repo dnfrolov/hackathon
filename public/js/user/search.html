@@ -1,0 +1,40 @@
+<div>
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Skype</th>
+                <th>Room</th>
+            </tr>
+            <tr ng-repeat="user in vm.users">
+                <td>{{user.firstName}} {{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.skype}}</td>
+                <td>{{user.room}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Skills</th>
+                <th>Email</th>
+                <th>Skype</th>
+            </tr>
+            <tr ng-repeat="user in vm.users">
+                <td>{{user.firstName}} {{user.lastName}}</td>
+                <td>{{user.expPosition}}</td>
+                <td>none</td>
+                <td>{{user.email}}</td>
+                <td>{{user.skype}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

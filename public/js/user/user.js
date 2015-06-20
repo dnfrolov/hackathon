@@ -22,4 +22,5 @@ angular.module('User', [])
     .service('UserService', ['$q', '$http', 'UserModel', require('./user-service')])
     .factory('UserModel', function () {
         return require('./user-model');
-    });
+    })
+    .controller('UserSearchController', ['users', require('./user-search-controller')]);
