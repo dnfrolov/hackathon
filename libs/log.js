@@ -3,8 +3,6 @@
 var winston = require('winston'),
     ENV = process.env.NODE_ENV;
 
-require('winston-mongodb').MongoDB;
-
 function getLogger(module) {
 
     var path = module.filename.split('/').slice(-2).join('/'),
