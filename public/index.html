@@ -7,7 +7,30 @@
 </head>
 <body>
 
-<ui-view class="container-fluid page-container"></ui-view>
+<div class="container-fluid">
+    <div class="layout-header clearfix">
+        <div class="logo-container">
+            <img src="/images/logo.png"/>
+            <span class="title">WHO<span style="color: red; display: inline;">:is</span>WHO</span>
+            <span class="subtitle">Remarkable People</span>
+        </div>
+
+
+        <div class="pull-right custom-nav">
+
+            <ul class="nav nav-tabs">
+                <li ui-sref-active="active">
+                    <a ui-sref="user.profile">Profile</a>
+                </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="performance">Performance</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ui-view class=" page-container"></ui-view>
+</div>
 
 <script src="//localhost:3000/build/libs.js"></script>
 <script src="//localhost:3000/build/app.js"></script>

@@ -12,6 +12,7 @@ var getLibs = function (min) {
         basePath + 'angular/angular' + target + '.js',
         basePath + 'lodash/dist/lodash' + target + '.js',
         basePath + 'angular-bootstrap/ui-bootstrap-tpls' + target + '.js',
+        basePath + 'bootstrap/dis/js/bootstrap' + target + '.js',
         basePath + 'angular-ui-router/release/angular-ui-router' + target + '.js',
         basePath + 'alertify.js/lib/alertify' + target + '.js',
         basePath + 'angular-ui-tree/dist/angular-ui-tree' + target + '.js',

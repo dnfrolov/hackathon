@@ -2,14 +2,14 @@
 
 var _ = require('lodash');
 
-var groups = require('./groups');
+//var groups = require('./groups');
 var angular = require('angular');
 
 
-function PerformanceController(ngDialog) {
+function PerformanceController(ngDialog, performanceService, dictionary, prs) {
     var vm = this;
-    vm.groups = groups;
-    vm.activePR = _.find(groups, {type: 'pr', status: 'active'});
+    vm.groups = dictionary.concat(prs);
+    vm.activePR = _.find(vm.groups, {type: 'pr', status: 'active'});
 
 
     vm.removeItem = function (group, item) {
@@ -49,7 +49,7 @@ function PerformanceController(ngDialog) {
     };
 
     vm.addGroup = function () {
-        groups.push({
+        vm.groups.push({
             title: vm.newGroupTitle,
             type: 'dictionary',
             items: []
@@ -87,6 +87,10 @@ function PerformanceController(ngDialog) {
                 item: item
             }
         });
+    };
+
+    vm.save = function () {
+
     };
 }
 
