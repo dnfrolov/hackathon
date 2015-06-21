@@ -12,7 +12,7 @@ function QuestionnaireController($scope, $state, UserService, questions, respons
         });
     };
 
-    if (Array.isArray(responses)) {
+    if (Array.isArray(responses) && responses.length) {
         $scope.responses = responses.map(function (response) {
             return _.assign(response, {questionName: getQuestionById(response.questionId).name});
         });
