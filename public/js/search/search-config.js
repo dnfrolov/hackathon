@@ -8,7 +8,10 @@ function config($stateProvider) {
             controller: 'SearchController',
             resolve: {
                 users: ['UserService', function (UserService) {
-                    return UserService.getAll();
+                    return UserService.getList();
+                }],
+                questions: ['QuestionService', function (QuestionService) {
+                    return QuestionService.getList();
                 }]
             }
         });
