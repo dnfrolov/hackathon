@@ -34,16 +34,6 @@ function config($stateProvider) {
                     return UserService.get($stateParams.id);
                 }]
             }
-        })
-        .state('search', {
-            url: '/search',
-            template: require('./search.html'),
-            controller: 'UserSearchController as vm',
-            resolve: {
-                users: ['UserService', function (UserService) {
-                    return UserService.getAll();
-                }]
-            }
         });
 }
 
