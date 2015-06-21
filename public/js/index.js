@@ -16,7 +16,8 @@ angular.element(document).ready(function () {
             'Performance',
             'User'
         ])
-        .config(['$urlRouterProvider', require('./config')]);
+        .config(['$urlRouterProvider', require('./config')])
+        .run(['$rootScope', '$state', require('./run')]);
 
     angular.bootstrap(document, ['Hackathon']);
 });
