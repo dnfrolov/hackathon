@@ -8,7 +8,7 @@ var alertify = require('alertify');
 
 function PerformanceController(ngDialog, $stateParams, performanceService, dictionary, prs) {
     var vm = this;
-    prs = prs || [{
+    prs = prs && prs.length || [{
         "title": "Performance Review - Sep 2014",
         "type": "pr",
         "status": "active",
