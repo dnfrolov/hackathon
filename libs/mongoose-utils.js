@@ -50,6 +50,9 @@ module.exports = exports = function (schema) {
             var Model = this;
 
             return async.each(data, function (item, callback) {
+                if(item._id) {
+                    return Model.findByIdAndUpdate(item._id, item, { new: true }, callback);
+                }
                 var newModel = new Model(item);
                 newModel.save(callback);
             }, done);

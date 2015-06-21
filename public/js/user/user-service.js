@@ -6,16 +6,13 @@ var alertify = require('alertify');
 function UserService($q, $http, UserModel) {
     var baseUrl = '/users/';
 
-    this.getAll = function () {
+    this.getList = function () {
         var self = this;
+
         return $http.get(baseUrl).then(function (response) {
-            var users = [];
-            _.forEach(response.data.data.data, function (user){
-                users.push(self.create(user));
+            return response.data.data.data.map(function (user){
+                return self.create(user);
             });
-
-            return users;
-
         });
     };
 
@@ -69,6 +66,18 @@ function UserService($q, $http, UserModel) {
             function () {
                 alertify.error('Something went wrong');
             });
+    };
+
+    this.searchByTags = function (tags) {
+        var self = this;
+
+        return $http.get(baseUrl + 'searchByTags', {
+            params: {filter: tags}
+        }).then(function (response) {
+            return response.data.data.data.map(function (user){
+                return self.create(user);
+            });
+        });
     };
 }
 

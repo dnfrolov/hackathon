@@ -40,8 +40,9 @@ router.route('/searchByTags')
             return res.conflict(null, 'pass filter');
         }
 
+        var filter = Array.isArray(req.query.filter) ? req.query.filter : [req.query.filter];
         controller.getUsers({
-            filter: {'responses.tags._id': {$in: req.query.filter}}
+            filter: {'responses.tags._id': {$in: filter}}
         }, function(err, data) {
             if (err) {
                 return res.error(err);

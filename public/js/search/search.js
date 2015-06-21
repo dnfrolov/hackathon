@@ -8,5 +8,6 @@ angular.module('Search', [])
         '$scope',
         'UserService',
         'users',
+        'questions',
         require('./search-controller')
     ]);
