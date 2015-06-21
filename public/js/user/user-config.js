@@ -36,7 +36,7 @@ function config($stateProvider) {
             }
         })
         .state('stats', {
-            url: '/stats/:id',
+            url: '/stats',
             template: require('./stats.html'),
             controller: 'UserStatsController as vm',
             resolve: {

@@ -27,7 +27,7 @@
                 <th>Room</th>
             </tr>
             <tr ng-repeat="user in usersByTags">
-                <td>{{user.firstName}} {{user.lastName}}</td>
+                <td><a href="/#/user/profile/{{user._id}}">{{user.firstName}} {{user.lastName}}</a></td>
                 <td>{{user.email}}</td>
                 <td>{{user.skype}}</td>
                 <td>{{user.room}}</td>
@@ -55,7 +55,7 @@
                 <th>Skype</th>
             </tr>
             <tr ng-repeat="user in usersBySkills">
-                <td>{{user.firstName}} {{user.lastName}}</td>
+                <td><a href="/#/user/profile/{{user._id}}">{{user.firstName}} {{user.lastName}}</a></td>
                 <td>{{user.expPosition}}</td>
                 <td>
                     <div ng-repeat="skill in user.skills">

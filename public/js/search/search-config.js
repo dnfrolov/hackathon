@@ -3,7 +3,7 @@
 function config($stateProvider) {
     $stateProvider
         .state('search', {
-            url: '/search/:id',
+            url: '/search',
             template: require('./search.html'),
             controller: 'SearchController',
             resolve: {
