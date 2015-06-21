@@ -9,6 +9,8 @@ var path = require('path'),
     modules = require('./modules'),
     bodyParser = require('body-parser');
 
+var favicon = require('serve-favicon');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
@@ -27,6 +29,8 @@ app.use(require('compression')());
 app.use(require('./middlewares/locals'));
 modules.init(app);
 app.use(require('./middlewares/errors'));
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 module.exports = exports = app;
 
