@@ -33,6 +33,43 @@ router.route('/')
         });
     });
 
+
+router.route('/searchByTags')
+    .get(function(req, res) {
+        if(!req.query.filter) {
+            return res.conflict(null, 'pass filter');
+        }
+
+        controller.getUsers({
+            filter: {'responses.tags._id': {$in: req.query.filter}}
+        }, function(err, data) {
+            if (err) {
+                return res.error(err);
+            }
+
+            return res.success(data);
+        });
+    });
+
+router.route('/searchBySkills')
+    .get(function(req, res) {
+        if(!req.query.filter) {
+            return res.conflict(null, 'pass filter');
+        }
+
+        controller.getUsers({
+            filter: {
+                'skills.title': new RegExp(req.query.filter, 'i')
+            }
+        }, function(err, data) {
+            if (err) {
+                return res.error(err);
+            }
+
+            return res.success(data);
+        });
+    });
+
 router.route('/:user')
     .get(function(req, res) {
 
@@ -126,40 +163,6 @@ router.route('/:user/prs')
             }
 
             return res.success(user);
-        });
-    });
-
-router.route('/:user/searchByTags')
-    .get(function(req, res) {
-        if(!req.query.filter) {
-            return res.conflict(null, 'pass filter');
-        }
-
-        controller.getUsers({
-            filter: {'responses.tags._id': {$in: req.query.filter}}
-        }, function(err, data) {
-            if (err) {
-                return res.error(err);
-            }
-
-            return res.success(data);
-        });
-    });
-
-router.route('/:user/searchBySkills')
-    .get(function(req, res) {
-        if(!req.query.filter) {
-            return res.conflict(null, 'pass filter');
-        }
-
-        controller.getUsers({
-            filter: {'skills.title': {$in: req.query.filter}}
-        }, function(err, data) {
-            if (err) {
-                return res.error(err);
-            }
-
-            return res.success(data);
         });
     });
 
