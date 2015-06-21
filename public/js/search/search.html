@@ -1,5 +1,4 @@
 <div>
-
     <div>
         <table class="table table-striped">
             <tr>
@@ -8,7 +7,7 @@
                 <th>Skype</th>
                 <th>Room</th>
             </tr>
-            <tr ng-repeat="user in vm.users">
+            <tr ng-repeat="user in usersByTags">
                 <td>{{user.firstName}} {{user.lastName}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.skype}}</td>
@@ -26,7 +25,7 @@
                 <th>Email</th>
                 <th>Skype</th>
             </tr>
-            <tr ng-repeat="user in vm.users">
+            <tr ng-repeat="user in usersBySkills">
                 <td>{{user.firstName}} {{user.lastName}}</td>
                 <td>{{user.expPosition}}</td>
                 <td>
