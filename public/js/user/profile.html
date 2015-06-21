@@ -1,135 +1,144 @@
-<div class="profile-page">
+<div class="profile-page form123">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <img alt="" src="/images/anonymous.jpg">
         </div>
-        <div class="col-sm-10">
-            <h1>{{user.firstName}} {{user.lastName}}</h1>
-            <button type="button" class="btn btn-success" ng-click="edit()">Edit</button>
+        <div class="col-sm-9">
+            <div class="row">
+                <h3>General Info</h3>
+                <hr/>
+                <div class="col-md-6 sd12">
+                    <div>
+                        <span>First Name:</span>
+                        <span>{{user.firstName}}</span>
+                    </div>
+                    <div>
+                        <span>Last Name:</span>
+                        <span>{{user.lastName}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date of Birth:</span>
+                        <span>{{user.birthday | date: "yyyy-MM-dd"}}</span>
+                    </div>
+
+                    <div>
+                        <span>Department:</span>
+                        <span>{{user.department}}</span>
+                    </div>
+
+                    <div>
+                        <span>Title:</span>
+                        <span>{{user.currentPosition}}</span>
+                    </div>
+
+                    <div>
+                        <span>Corporate Email:</span>
+                        <span>{{user.email}}</span>
+                    </div>
+
+                </div>
+                <div class="col-md-6 sd12">
+                    <div>
+                        <span>Skype:</span>
+                        <span>{{user.skype}}</span>
+                    </div>
+
+                    <div>
+                        <span>Mobile:</span>
+                        <span>{{user.mobile}}</span>
+                    </div>
+
+                    <div>
+                        <span>Profile in Facebook:</span>
+                        <span>{{user.facebook}}</span>
+                    </div>
+
+                    <div>
+                        <span>Profile in LinkedIn:</span>
+                        <span>{{user.linkedin}}</span>
+                    </div>
+
+                    <div>
+                        <span>Date of Employment:</span>
+                        <span>{{user.dateOfEmployment | date: "yyyy-MM-dd"}}</span>
+                    </div>
+
+                    <div>
+                        <span>Room:</span>
+                        <span>{{user.room}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <h3>General Info</h3>
-    <hr/>
-
     <div class="row">
-        <div class="col-sm-2">First Name:</div>
-        <div class="col-sm-10">{{user.firstName}}</div>
-    </div>
+        <div class="col-md-4 sd12">
+            <h3>Education</h3>
+            <hr/>
 
-    <div class="row">
-        <div class="col-sm-2">Last Name:</div>
-        <div class="col-sm-10">{{user.lastName}}</div>
-    </div>
+            <div>
+                <span>Name of Institution:</span>
+                <span>{{user.university}}</span>
+            </div>
 
-    <div class="row">
-        <div class="col-sm-2">Date of Birth:</div>
-        <div class="col-sm-10">{{user.birthday | date: "yyyy-MM-dd"}}</div>
-    </div>
+            <div>
+                <span>Faculty:</span>
+                <span>{{user.faculty}}</span>
+            </div>
 
-    <div class="row">
-        <div class="col-sm-2">Department:</div>
-        <div class="col-sm-10">{{user.department}}</div>
-    </div>
+            <div>
+                <span>Major:</span>
+                <span>{{user.major}}</span>
+            </div>
 
-    <div class="row">
-        <div class="col-sm-2">Title:</div>
-        <div class="col-sm-10">{{user.currentPosition}}</div>
-    </div>
+            <div>
+                <span>Graduation Year:</span>
+                <span>{{user.graduationYear}}</span>
+            </div>
 
-    <div class="row">
-        <div class="col-sm-2">Corporate Email:</div>
-        <div class="col-sm-10">{{user.email}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Skype:</div>
-        <div class="col-sm-10">{{user.skype}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Mobile:</div>
-        <div class="col-sm-10">{{user.mobile}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Profile in Facebook:</div>
-        <div class="col-sm-10">{{user.facebook}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Profile in LinkedIn:</div>
-        <div class="col-sm-10">{{user.linkedin}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Date of Employment:</div>
-        <div class="col-sm-10">{{user.dateOfEmployment | date: "yyyy-MM-dd"}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Room:</div>
-        <div class="col-sm-10">{{user.room}}</div>
-    </div>
-
-    <h3>Education</h3>
-    <hr/>
-
-    <div class="row">
-        <div class="col-sm-2">Name of Institution:</div>
-        <div class="col-sm-10">{{user.university}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Faculty:</div>
-        <div class="col-sm-10">{{user.faculty}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Major:</div>
-        <div class="col-sm-10">{{user.major}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Graduation Year:</div>
-        <div class="col-sm-10">{{user.graduationYear}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Additional Courses:</div>
-        <div class="col-sm-10">{{user.additionalCourses}}</div>
-    </div>
-
-    <h3>Experience</h3>
-    <hr/>
-
-    <div class="row">
-        <div class="col-sm-2">Title:</div>
-        <div class="col-sm-10">{{user.expPosition}}</div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-2">Years:</div>
-        <div class="col-sm-10">{{user.expYears}}</div>
-    </div>
-
-    <h3>Summary</h3>
-    <hr/>
-
-    <div class="row">
-        <div class="col-sm-2">Summary:</div>
-        <div class="col-sm-10">{{user.summary}}</div>
-    </div>
-
-    <h3>Hobbies & Interests</h3>
-    <hr/>
-
-    <div class="row" ng-repeat="response in responses">
-        <div class="col-sm-2">{{response.questionName}}:</div>
-        <div class="col-sm-10">
-            <ul>
-                <li ng-repeat="tag in response.tags">{{tag.name}}</li>
-            </ul>
+            <div>
+                <span>Additional Courses:</span>
+                <span>{{user.additionalCourses}}</span>
+            </div>
         </div>
+        <div class="col-md-4 sd12">
+            <h3>Experience</h3>
+            <hr/>
+
+            <div>
+                <span>Title:</span>
+                <span>{{user.expPosition}}</span>
+            </div>
+
+            <div>
+                <span>Years:</span>
+                <span>{{user.expYears}}</span>
+            </div>
+
+            <div>
+                <span>Summary:</span>
+                <span>{{user.summary}}</span>
+            </div>
+        </div>
+
+        <div class="col-md-4 sd12">
+            <h3>Hobbies & Interests</h3>
+            <hr/>
+
+            <div ng-repeat="response in responses">
+                <span>{{response.questionName}}:</span>
+                <div>
+                    <ul>
+                        <li ng-repeat="tag in response.tags">{{tag.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <button type="button" class="btn btn-success" ng-click="edit()">Edit</button>
     </div>
 </div>

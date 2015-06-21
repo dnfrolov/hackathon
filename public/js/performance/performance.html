@@ -3,7 +3,7 @@
 
         <div class="col-md-6">
             <h3>User Skills and Experience</h3>
-
+            <hr>
             <ol>
                 <li ng-repeat="group in vm.groups" ui-tree-node ng-if="group.type === 'pr'" data-collapsed="group.status === 'completed'">
                     <!-- Header -->
@@ -79,6 +79,8 @@
 
         <div class="col-md-6">
             <h3>Available Goals</h3>
+
+            <hr>
 
             <ol>
                 <li ui-tree-node ng-repeat="group in vm.groups" ng-if="group.type === 'dictionary'" data-collapsed="true">
