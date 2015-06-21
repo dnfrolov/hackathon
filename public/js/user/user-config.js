@@ -44,6 +44,15 @@ function config($stateProvider) {
                     return UserService.getAll();
                 }]
             }
+        }).state('stats', {
+            url: '/stats',
+            template: require('./stats.html'),
+            controller: 'UserStatsController as vm',
+            resolve: {
+                users: ['UserService', function (UserService) {
+                    return UserService.getAll();
+                }]
+            }
         });
 }
 

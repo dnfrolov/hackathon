@@ -23,4 +23,5 @@ angular.module('User', [])
     .factory('UserModel', function () {
         return require('./user-model');
     })
-    .controller('UserSearchController', ['users', require('./user-search-controller')]);
+    .controller('UserSearchController', ['users', require('./user-search-controller')])
+    .controller('UserStatsController', ['users', require('./user-stats-controller')]);

@@ -1,8 +1,8 @@
-<div class="performance-form" ui-tree data-drop-enabled="false" data-drag-enabled="false">
+<div class="performance-form form123 " ui-tree data-drop-enabled="false" data-drag-enabled="false">
     <div class="angular-ui-tree row" ui-tree-nodes ng-model="vm.groups">
 
         <div class="col-md-6">
-            <h3 style="font-weight: bold;">User Skills and Experience</h3>
+            <h3>User Skills and Experience</h3>
 
             <ol>
                 <li ng-repeat="group in vm.groups" ui-tree-node ng-if="group.type === 'pr'" data-collapsed="group.status === 'completed'">
@@ -78,7 +78,7 @@
         </div>
 
         <div class="col-md-6">
-            <h3 style="font-weight: bold;">Available Goals</h3>
+            <h3>Available Goals</h3>
 
             <ol>
                 <li ui-tree-node ng-repeat="group in vm.groups" ng-if="group.type === 'dictionary'" data-collapsed="true">

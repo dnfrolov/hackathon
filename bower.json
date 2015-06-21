@@ -12,6 +12,7 @@
     "bootstrap": "~3.3.5",
     "lodash": "~2.4.1",
     "ng-tags-input": "~2.3.0",
-    "ngDialog": "~0.4.0"
+    "ngDialog": "~0.4.0",
+    "amcharts": "~3.14.3"
   }
 }
