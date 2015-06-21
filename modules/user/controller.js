@@ -4,7 +4,7 @@ var model = require('./model');
 
 exports.getUsers = function(params, done) {
     params = params || {};
-    //params.fields = model.getReadFilterKeys('public');
+    // params.fields = model.getReadFilterKeys('public');
 
     return model.getList(params, done);
 };
