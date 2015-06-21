@@ -8,12 +8,14 @@ var alertify = require('alertify');
 
 function PerformanceController(ngDialog, $stateParams, performanceService, dictionary, prs) {
     var vm = this;
-    prs = prs && prs.length || [{
-        "title": "Performance Review - Sep 2014",
-        "type": "pr",
-        "status": "active",
-        "items": []
-    }];
+    if (!prs || !prs.length) {
+        prs = [{
+            "title": "Performance Review - Sep 2014",
+            "type": "pr",
+            "status": "active",
+            "items": []
+        }];
+    }
     vm.groups = dictionary.concat(prs);
     vm.activePR = _.find(vm.groups, {type: 'pr', status: 'active'});
 
