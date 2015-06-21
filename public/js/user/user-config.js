@@ -36,12 +36,12 @@ function config($stateProvider) {
             }
         })
         .state('stats', {
-            url: '/stats',
+            url: '/stats/:id',
             template: require('./stats.html'),
             controller: 'UserStatsController as vm',
             resolve: {
                 users: ['UserService', function (UserService) {
-                    return UserService.getAll();
+                    return UserService.getList();
                 }]
             }
         });

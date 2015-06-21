@@ -79,6 +79,18 @@ function UserService($q, $http, UserModel) {
             });
         });
     };
+
+    this.searchBySkills = function (string) {
+        var self = this;
+
+        return $http.get(baseUrl + 'searchBySkills', {
+            params: {filter: string}
+        }).then(function (response) {
+            return response.data.data.data.map(function (user){
+                return self.create(user);
+            });
+        });
+    };
 }
 
 module.exports = UserService;

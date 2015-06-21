@@ -16,6 +16,11 @@ function run($rootScope, $state) {
             event.preventDefault();
             $state.go('search', {id: fromParams.id});
         }
+
+        if (toState.name === 'stats' && !toParams.id && fromParams.id) {
+            event.preventDefault();
+            $state.go('stats', {id: fromParams.id});
+        }
     });
 }
 

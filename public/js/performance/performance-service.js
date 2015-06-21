@@ -27,7 +27,7 @@ function PerformanceService ($http) {
         return $http.put('/users/' + userId + '/prs', {prs: prs, skills: skills}).then(function () {
             return $http.post('/goals/multi', goals);
         }).then(function () {
-            alertify.alert('Changes has been Updated');
+            alertify.alert('Changes have been applied');
         }).catch(function(){
             alertify.alert('Something Went Wrong. Please Try Later');
         });
